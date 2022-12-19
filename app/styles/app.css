@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.heading-link {
+    text-decoration: none;
+    color: rgb(26, 25, 25);
+}
+
+.nav-item .nav-options{
+    text-decoration: none;
+    color: rgb(235, 226, 226);
+}
+
+.task-item {
+    border-radius: 5px;
+}
+.task-options {
+    margin-left: 20%;
+}
+
+.nav-item {
+    margin-right: 15px;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-weight: 500;
+}

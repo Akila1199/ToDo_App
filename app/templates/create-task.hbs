@@ -1,0 +1,36 @@
+{{option-buttons}}
+<div class="container ms-5 mt-4 w-25">
+    <div class="mb-3">
+        <label for="task-detail" class="form-label">Task</label>
+        {{input required=true type="text" class="form-control" value=task-detail placeholder="Enter your Task"}}
+    </div>
+    <div class="mb-3">
+        <label for="task-date" class="form-label">Task Date</label>
+        {{input type="date" class="form-control" value=task-date placeholder="Enter Date"}}
+    </div>
+    {{#link-to "home" class="btn btn-primary ms-5"}}Cancel{{/link-to}}
+    <button {{action 'createNewTask' }} type="submit" class="btn btn-primary ms-5">Save</button>
+</div>
+
+
+{{!-- To Handle Alerts --}}
+
+{{#if this.showAlert}}
+<div class="container justify-content-center fixed-top w-25 mt-0">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{#if this.isSaved}}
+        <strong>Task Saved SuccessFully</strong>
+    {{/if}}
+    {{#if this.taskInvalid}}
+        <strong>Task Field should not be Empty</strong>
+    {{/if}}
+    {{#if this.dateInValid}}
+        <strong>Please Make sure the date is in future and within 100 years</strong>
+    {{/if}}
+    {{#if this.userNotLoggedIn}}
+        <strong>Please Login to save tasks</strong>
+    {{/if}}
+    <button {{action 'closeAlert' }} type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,12 @@
+{{option-buttons}}
+<h2 class="mt-4 ms-4">Completed Tasks</h2>
+{{#each this.model as |task|}}
+    {{#if task.isCompleted}}
+        <div class="row border ms-5 mt-4 w-75 task-item" id={{task.taskId}}>
+            <div class="col-6 mt-2">
+                <h5>{{task.taskName}}</h5>
+                <p>{{task.taskDate}}</p>
+            </div>
+        </div>
+    {{/if}}
+{{/each}}

@@ -1,0 +1,60 @@
+
+{{#each this.tasks as |task|}}
+    {{#unless task.isCompleted}}
+        <div class="row border ms-5 mt-4 w-75 task-item" id={{task.taskId}}>
+            <div class="col-6 mt-2">
+                <h5 class="task-title">{{task.taskName}}</h5>
+                <p class="task-date">{{task.taskDate}}</p>
+                <p class="task-user">{{task.user}}</p>
+            </div>
+            <div class="col task-options">
+                <button {{action "completedTask" task}} class="btn btn-outline-dark mt-3">Completed</button>
+                <button {{action "editTask" task}} class="btn btn-outline-dark mt-3" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                <button {{action "deleteTask" task}} class="btn btn-outline-dark mt-3">Delete</button>
+            </div>
+        </div>
+    {{/unless}}
+{{/each}}
+
+<div class="modal" tabindex="-1" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+        <label for="task-detail" class="form-label">Task</label>
+        {{input required=true type="text" class="form-control task-name" value=task-detail}}
+    </div>
+    <div class="mb-3">
+       <label for="task-update-date" class="form-label">Task Date</label>
+        {{input type="date" class="form-control task-due-date" value=task-update-date}}
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button {{action "saveUpdatedTask"}} type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+  {{!-- To Handle Alerts --}}
+
+  {{#if this.showAlert}}
+  <div class="container justify-content-center fixed-top w-25 mt-0">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{#if this.isSaved}}
+          <strong>Task Saved SuccessFully</strong>
+      {{/if}}
+      {{#if this.taskInvalid}}
+          <strong>Task Field should not be Empty</strong>
+      {{/if}}
+      {{#if this.dateInValid}}
+          <strong>Please Make sure the date is in future and within 100 years</strong>
+      {{/if}}
+      <button {{action 'closeAlert' }} type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  </div>
+  {{/if}}
+</div>

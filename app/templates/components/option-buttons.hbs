@@ -1,0 +1,40 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">My Todo App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    {{#link-to "home" class="nav-options"}}Home{{/link-to}}
+                </li>
+                <li class="nav-item">
+                    {{#link-to "create-task" class="nav-options create-task"}}Create New Task{{/link-to}}
+                </li>
+                <li class="nav-item">
+                    {{#link-to "completed-tasks" class="nav-options completed-task"}}Completed{{/link-to}}
+                </li>
+                {{!-- Display login and default user --}}
+                {{#unless Loggedin}}
+                    <li class="nav-item">
+                        {{#link-to "login" class="nav-options"}}Login{{/link-to}}
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-options">User</p>
+                    </li>
+                {{/unless}}
+                {{!-- Display Logout and current username --}}
+                {{#if Loggedin}}
+                    <li class="nav-item">
+                        {{#link-to "home" class="nav-options"}}<span {{action 'logout'}}>Logout</span>{{/link-to}}
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-options">{{current_user}}</p>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>
