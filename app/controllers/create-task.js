@@ -24,6 +24,7 @@ export default Ember.Controller.extend({
             const date_limit = new Date();
             date_limit.setFullYear(date_limit.getFullYear()+100);
            
+            // console.log(date_limit,curr_date);
             this.ResetAlert();
 
             if(localStorage.getItem('isLoggedIn')=='false' || !localStorage.getItem('isLoggedIn')){
@@ -34,7 +35,7 @@ export default Ember.Controller.extend({
                 this.set('showAlert',true);
                 this.set('taskInvalid',true);
             }
-            else if(curr_date <= today_date || curr_date > date_limit) {
+            else if(curr_date <= today_date || curr_date > date_limit || curr_date == "Invalid Date") {
                 this.set('showAlert',true);
                 this.set('dateInValid',true);
             }
