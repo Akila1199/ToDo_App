@@ -9,7 +9,7 @@
         {{input type="date" class="form-control" value=task-date placeholder="Enter Date"}}
     </div>
     {{#link-to "home" class="btn btn-primary ms-5"}}Cancel{{/link-to}}
-    <button {{action 'createNewTask' }} type="submit" class="btn btn-primary ms-5">Save</button>
+    <AddonSubmitButtonComponent @buttonLabel="Save" onclick= {{action 'createNewTask' }} type="submit" class="d-inline"/>
 </div>
 
 

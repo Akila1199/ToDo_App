@@ -47,7 +47,7 @@ export default Component.extend({
                 this.set('showAlert',true);
                 this.set('taskInvalid',true);
             }
-            else if(curr_date <= today_date || curr_date > date_limit) {
+            else if(curr_date <= today_date || curr_date > date_limit || curr_date == "Invalid Date") {
                 this.set('showAlert',true);
                 this.set('dateInValid',true);
             }
